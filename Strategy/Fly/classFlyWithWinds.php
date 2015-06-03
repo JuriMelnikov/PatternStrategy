@@ -1,4 +1,6 @@
 <?php
+//namespace Patterns\Strategy\Fly;
+
 class classFlyWithWinds implements iFlyable{
 	public function fly()
 	{

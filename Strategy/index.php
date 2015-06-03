@@ -1,3 +1,31 @@
+<?php
+// namespace Patterns\Strategy;
+// use Patterns\Strategy\Ducks;
+// use Patterns\Strategy\Quack;
+// use Patterns\Strategy\Fly;
+function __autoload($class_name) 
+    {
+        //class directories
+        $directorys = array(
+            'Ducks/',
+            'Fly/',
+            'Quack/'
+            
+        );
+        
+        //for each directory
+        foreach($directorys as $directory)
+        {
+            //see if the file exsists
+            if(file_exists($directory.$class_name . '.php'))
+            {
+                require_once($directory.$class_name . '.php');
+                //only require the class once, so quit after to save effort (if you got more, then name them something else 
+                return;
+            }            
+        }
+    }
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -6,21 +34,17 @@
 </head>
 <body>
 <?php
-
-function __autoload($class_name) { 
-     include_once($class_name . ".php"); 
-} 
 $Ducks[]= new classSimpleDuck();
 $Ducks[]= new classExoticDuck();
 $Ducks[]= new classBlueDuck();
 $Ducks[]= new classWoodenDuck();
 $Ducks[]= new classRubberDuck();
+$Ducks[0]->iterateVisible();
 foreach ($Ducks as $value) {
 	$value->display();
-	if($value instanceof iFlyable) $value->fly();
-	if($value instanceof iQuackble) $value->quack();
 	$value->swim();
-	
+	$value->fly();
+	$value->quack();
 }
 
 ?>	
