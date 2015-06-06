@@ -15,7 +15,12 @@ function classDuckBase(){
 	
 	
 }
-
+	public function setFlyBehaviour(iFlyable $newBehaviour){
+		$this->flyBehaviour=$newBehaviour;
+	}
+	public function setQuackBehaviour(iQuackble $newBehaviour){
+		$this->quackBehaviour=$newBehaviour;
+	}
 	abstract function display();
 
 	public function swim(){

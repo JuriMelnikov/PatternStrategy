@@ -46,9 +46,16 @@ foreach ($Ducks as $value) {
 	$value->swim();
 	$value->fly();
 	$value->quack();
-    
-
 }
+$duck=new classUpgradebleDuck();
+$duck->setFlyBehaviour(new classFlyWithWinds());
+$duck->setQuackBehaviour(new classExotic());
+
+$duck->display();
+$duck->swim();
+$duck->fly();
+$duck->quack();
+
 
 ?>	
 </body>
