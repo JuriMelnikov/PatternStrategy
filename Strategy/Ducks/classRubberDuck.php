@@ -3,12 +3,11 @@
 
 
 class classRubberDuck extends classDuckBase{
+	
 	function __construct(){
-		
-			$this->flyBehaviour=new classNoFly();
-		
-		
+		$this->flyBehaviour=new classNoFly();
 	}
+
 	public function display()
 	{
 		print("<br>Я резиновая утка <br>");

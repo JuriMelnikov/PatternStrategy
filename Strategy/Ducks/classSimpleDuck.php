@@ -7,7 +7,7 @@ class classSimpleDuck extends classDuckBase{
 		print("<br>Я простая утка <br>");
 	}
 	function iterateVisible() {
-       echo "MyClass::iterateVisible:\n";
+       echo "classSimpleDuck::iterateVisible:\n";
        foreach($this as $key => $value) {
            print_r( "$key => $value\n");
        }

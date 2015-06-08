@@ -18,11 +18,11 @@ function __constuct(){
 	}
 	public function fly()
 	{
-		$this->flyBehaviour->fly(self);
+		$this->flyBehaviour->fly();
 	}
 	public function quack()
 	{
-		$this->quackBehaviour->quack(self);
+		$this->quackBehaviour->quack();
 	}
 	
 
