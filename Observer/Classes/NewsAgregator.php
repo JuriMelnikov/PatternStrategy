@@ -1,23 +1,23 @@
 <?php
-class ConcreteSubject implements ISubject{
+class NewsAgregator implements ISubject{
 	protected $register=array(); //здесь зарегестрированные наблюдатели
-	//добавляем наблюдателя
-	public function register(IObserver $observer){
+	
+	public function registerObserver(IObserver $observer){
 		$this->register[]=$observer;
-		echo count($this->register);
+		
 	}
 	//убираем наблюдателя
-	public function remover(IObserver $observer){
-		
+	public function removObserver(IObserver $observer){
 		while (($remObserver = array_search($observer, $this->register)) !== false) {
+			echo get_class($this->register[$remObserver]);
 			unset($this->register[$remObserver]);
 		} 
-		//print_r($this->register);
+		
 	}
 	//посылаем зарегестрированным наблюдателям новость
-	public function notify($news){
+	public function notify(){
 		foreach ($this->register as $key => $value) {
-			$value->update($news);
+			$value->update();
 		}
 	}
 }
