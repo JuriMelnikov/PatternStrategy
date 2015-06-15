@@ -1,6 +1,6 @@
 <?php
 interface ISubject{
-	public function register();
-	public function remover();
-	public function notify();
+	public function register(IObserver $observer);
+	public function remover(IObserver $observer);
+	public function notify($news);
 }

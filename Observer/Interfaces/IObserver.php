@@ -1,4 +1,4 @@
 <?php
 interface IObserver{
-	public update();
+	public function update($news);
 }

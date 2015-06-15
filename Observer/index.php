@@ -7,9 +7,8 @@ function __autoload($class_name)
     {
         //class directories
         $directorys = array(
-            'Ducks/',
-            'Fly/',
-            'Quack/'
+            'Classes/',
+            'Interfaces/'
             
             
         );
@@ -36,16 +35,22 @@ function __autoload($class_name)
 <body>
 <?php
 
+$newser=new ConcreteSubject();
+$wiget=new ConcreteObserver($newser);
+//$newser->register($wiget);
+$wiget2=new ConcreteObserver($newser);
+$wiget3=new ConcreteObserver($newser);
+//$wiget2->remSubject($wiget2);
+//$newser->register($wiget2);
+$newser->remover($wiget2);
+$newser->remover($wiget3);
+$newser->notify("<br>Это первая новость!");
+$newser->notify("<br>Это вторая новость!");
 
-foreach ($Ducks as $value) {
-
-	$value->display();
-	$value->swim();
-	$value->fly();
-	$value->quack();
-}
-
-
+echo"<br><b>Это первый виджет:</b>";
+$wiget->display();
+echo"<br><b>Это второй виджет:</b>";
+$wiget2->display();
 
 ?>	
 </body>
