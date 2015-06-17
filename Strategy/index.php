@@ -11,6 +11,7 @@ function __autoload($class_name)
             'Fly/',
             'Quack/'
             
+            
         );
         
         //for each directory
@@ -39,13 +40,22 @@ $Ducks[]= new classExoticDuck();
 $Ducks[]= new classBlueDuck();
 $Ducks[]= new classWoodenDuck();
 $Ducks[]= new classRubberDuck();
-$Ducks[0]->iterateVisible();
 foreach ($Ducks as $value) {
+
 	$value->display();
 	$value->swim();
 	$value->fly();
 	$value->quack();
 }
+$duck=new classUpgradebleDuck();
+$duck->setFlyBehaviour(new classFlyWithWinds());
+$duck->setQuackBehaviour(new classExotic());
+
+$duck->display();
+$duck->swim();
+$duck->fly();
+$duck->quack();
+
 
 ?>	
 </body>
