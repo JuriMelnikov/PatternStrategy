@@ -10,7 +10,7 @@ class WigetLenta implements IObserver{
 	}
 	
 	public function update($twiter, $lenta, $tv){
-		$this->lenta=$lenta;
+		$this->lenta=(String)$lenta;
 		$this->display();
 	}
 	//выводим новость
