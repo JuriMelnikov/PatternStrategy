@@ -1,17 +1,22 @@
 <?php
 class NewsAgregator extends Subject{
-	//реализуем абстрактный метод Subject
+
+	//реализуем абстрактный метод из Subject
 	public function notify(){
-		$twiter=$this->getTwiterNews();
-		$lenta=$this->getLentaNews();
-		$tv=$this->getTvNews();
+		$observer=array(
+						"twiter"=>$this->getTwiterNews(),
+						"lenta" =>$this->getLentaNews(),
+						"tv"   =>$this->getTvNews()
+						);
+		// Перебираем зарегестрированных наблюдателей 
+		// и посылаем каждому новость
 		foreach ($this->register as $key => $value) {
-			$value->update($twiter, $lenta, $tv);
+			$value->update($observer);
 		}
 	 }
 
 	// ----------генерируем новостные события -----------
-	public function getLentaNews(){
+	private function getLentaNews(){
 		$news=array(
 					"<br>Новость из ленты номер 1",
 					"<br>Новость из ленты номер 2",
@@ -20,7 +25,7 @@ class NewsAgregator extends Subject{
 		return $news[rand(0,2)];
 	}
 
-	public function getTwiterNews(){
+	private function getTwiterNews(){
 		$news=array(
 					"<br>Новость из твитера номер 1",
 					"<br>Новость из твитера номер 2",
@@ -29,7 +34,7 @@ class NewsAgregator extends Subject{
 		return $news[rand(0,2)];
 	}
 
-	public function getTvNews(){
+	private function getTvNews(){
 		$news=array(
 					"<br>Новость из tv номер 1",
 					"<br>Новость из tv номер 2",

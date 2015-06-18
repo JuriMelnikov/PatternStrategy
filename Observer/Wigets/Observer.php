@@ -1,29 +1,23 @@
 <?php
-class Observer implements IObserver{
-	private $observer;  
+abstract class Observer implements IObserver{
 	private $subject;
 
-	// Конструктор ноблюдателя
+	// Конструктор 
+	// Регистрирует наблюдателя (подписывается)
 	public function Observer(ISubject $subject){
 		$subject->registerObserver($this);
 		$this->subject=$subject;
 	}
-	// 
-	public function update($args){
-		foreach ($args as $key => $value) {
-			$this->observer=$value;
-			$this->display();
-		}
-		
-		
-	}
-	//выводим новость
-	public function display(){
-		print($this->twiter);
-		
-	}
+
+	// Удаляем подписку 
 	public function removeFromSubject(){
 		$this->subject->removeObserver($this);
 	}
-	
+
+	// получаем обновление
+	abstract public function update();
+
+	//выводим новость
+	abstract public function display();
+
 }

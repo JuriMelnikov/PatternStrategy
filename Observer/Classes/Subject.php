@@ -1,7 +1,8 @@
 <?php
 abstract class Subject implements ISubject{
 
-	protected $register=array(); //здесь зарегестрированные наблюдатели
+// Массив зарегистрированных наблюдателей доступный для потомков
+	protected $register=array(); 
 
 	// Регистрируем наблюдателя
 	 public function registerObserver(IObserver $observer){

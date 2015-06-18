@@ -1,6 +1,6 @@
 <?php
-class WigetLenta implements IObserver{
-	private $lenta; 
+class WigetLenta extends Observer{
+	private $lenta;
 	private $subject;
 
 	// Конструктор ноблюдателя
@@ -9,19 +9,23 @@ class WigetLenta implements IObserver{
 		$this->subject=$subject;
 	}
 	
-	public function update($twiter, $lenta, $tv){
-		$this->lenta=(String)$lenta;
+	// Получаем обновления (реализуем абстрактный метод из класса Observer)
+	public function update(){
+		$numargs = func_num_args();
+		$arg_list = func_get_args();
+		for ($i = 0; $i < $numargs; $i++){
+			foreach ($arg_list[$i] as $key => $value) {
+				if($key == "lenta"){
+					$this->lenta=$value;
+				}
+			}
+		}
 		$this->display();
 	}
-	//выводим новость
+	//выводим новость (реализация абстрактного метода из класса Observer)
 	public function display(){
 		print($this->lenta);
 		
 	}
-	// Удаляем себя из Субьекта
-	public function removeFromSubject(){
-		$this->subject->removeObserver($this);
-	}
-	
-	
+
 }

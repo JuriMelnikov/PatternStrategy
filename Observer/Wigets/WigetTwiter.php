@@ -1,6 +1,6 @@
 <?php
-class WigetTwiter implements IObserver{
-	private $twiter;  
+class WigetTwiter extends Observer{
+	private $twiter;
 	private $subject;
 
 	// Конструктор ноблюдателя
@@ -8,18 +8,25 @@ class WigetTwiter implements IObserver{
 		$subject->registerObserver($this);
 		$this->subject=$subject;
 	}
-	// 
-	public function update($twiter, $lenta, $tv){
-		$this->twiter=$twiter;
+
+	// Получаем обновления (реализуем абстрактный метод из класса Observer) 
+	public function update(){
+		$numargs = func_num_args();
+		$arg_list = func_get_args();
+		for ($i = 0; $i < $numargs; $i++){
+			foreach ($arg_list[$i] as $key => $value) {
+				if($key == "twiter"){
+					$this->twiter=$value;
+				}
+			}
+		}
 		$this->display();
 	}
-	//выводим новость
+
+	//выводим новость (реализация абстрактного метода из класса Observer)
 	public function display(){
 		print($this->twiter);
 		
-	}
-	public function removeFromSubject(){
-		$this->subject->removeObserver($this);
 	}
 	
 }

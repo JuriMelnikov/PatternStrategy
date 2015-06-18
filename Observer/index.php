@@ -13,7 +13,6 @@ function __autoload($class_name){
         if(file_exists($directory.$class_name . '.php'))
         {
             require_once($directory.$class_name . '.php');
-            //only require the class once, so quit after to save effort (if you got more, then name them something else 
             return;
         }            
     }
@@ -27,6 +26,7 @@ function __autoload($class_name){
 </head>
 <body>
 <?php
+
 //Создаем новостной агрегатор
 $agregator=new NewsAgregator();
 //Регистрируем наблюдателей
@@ -37,6 +37,7 @@ $WTv=new WigetTv($agregator);
 //$WTw->removeFromSubject();
 // Посылаем носвости подписчикам
 $agregator->notify();
+
 ?>
 </body>
 </html>
